@@ -104,4 +104,16 @@ function getMovieById(movieID) {
     });
 }
 
+function getRandomMovie() {
+  moviesEl.innerHTML = '';
+  resultHeading.innerHTML = '';
 
+  fetch(path)
+    .then(res => res.json())
+    .then(data => {
+      const randomIndex = Math.floor(Math.random() * data.length);
+      const movie = data[randomIndex];
+
+      addMovieToDOM(movie);
+    });
+}
