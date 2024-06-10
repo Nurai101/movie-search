@@ -95,6 +95,13 @@ function displayFilteredMovies(genre) {
     });
 }
 
-
+function getMovieById(movieID) {
+  fetch(path)
+    .then(res => res.json())
+    .then(data => {
+      const movie = data.find(m => m.id === parseInt(movieID));
+      addMovieToDOM(movie);
+    });
+}
 
 
