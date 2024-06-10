@@ -68,7 +68,32 @@ document.getElementById('fantasy').addEventListener('click', function() {
   displayFilteredMovies('Фэнтези');
 });
 
-
+function displayFilteredMovies(genre) {
+  fetch(path)
+    .then(res => res.json())
+    .then(data => {
+      const filteredMovies = genre === 'all' ? data : data.filter(movie => movie.genre.includes(genre));
+      
+      if (filteredMovies.length === 0) {
+        resultHeading.innerHTML = `<p>Нет результатов для жанра '${genre}'. Попробуйте снова!</p>`;
+      } else {
+        resultHeading.innerHTML = `<h2>${genre}:</h2>`;
+        moviesEl.innerHTML = filteredMovies
+          .map(
+            movie => `
+          <div class="movie">
+            <img src="${movie.image_url}" alt="${movie.title}" />
+            <div class="movie-info" data-movieID="${movie.id}">
+              <h3>${movie.title}</h3>
+              <p>${movie.author}</p>
+            </div>
+          </div>
+        `
+          )
+          .join('');
+      }
+    });
+}
 
 
 
