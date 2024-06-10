@@ -52,6 +52,21 @@ function searchMovies(e) {
   }
 }
 
+document.getElementById('all').addEventListener('click', function() {
+  displayFilteredMovies('all');
+});
+
+document.getElementById('action').addEventListener('click', function() {
+  displayFilteredMovies('Экшен');
+});
+
+document.getElementById('romance').addEventListener('click', function() {
+  displayFilteredMovies('Романтика');
+});
+
+document.getElementById('fantasy').addEventListener('click', function() {
+  displayFilteredMovies('Фэнтези');
+});
 
 
 
