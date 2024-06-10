@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <title>Поиск фильмов</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Поиск фильмов</h1>
+    <div class="flex">
+      <form class="flex" id="submit">
+        <input type="text" id="search" placeholder="Поиск фильмов по названию">
+        <button class="search-btn" type="submit">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+      <button class="random-btn" id="random">
+        <i class="fas fa-random"></i>
+      </button>
+    </div>
+    <div class="genres">
+      <button id="all">Все</button>
+      <button id="action">Экшен</button>
+      <button id="romance">Романтика</button>
+      <button id="fantasy">Фэнтези</button>
+    </div>
+    <div id="result-heading"></div>
+    <div id="movies" class="movies"></div>
+    <div id="single-movie"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
