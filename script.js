@@ -117,3 +117,38 @@ function getRandomMovie() {
       addMovieToDOM(movie);
     });
 }
+
+function addMovieToDOM(movie) {
+  single_movieEl.innerHTML = `
+    <div class="single-movie">
+      <h1>${movie.title}</h1>
+      <img src="${movie.image_url}" alt="${movie.title}" />
+      <div class="single-movie-info">
+        ${movie.author ? `<p>Автор: ${movie.author}</p>` : ''}
+        ${movie.genre ? `<p>Жанр: ${movie.genre}</p>` : ''}
+      </div>
+      <div class="main">
+        <p>${movie.description}</p>
+      </div>
+    </div>
+  `;
+}
+
+submit.addEventListener('submit', searchMovies);
+random.addEventListener('click', getRandomMovie);
+
+moviesEl.addEventListener('click', e => {
+  const movieInfo = e.composedPath().find(item => {
+    if (item.classList) {
+      return item.classList.contains('movie-info');
+    } 
+    else {
+      return false;
+    }
+  });
+
+  if (movieInfo) {
+    const movieID = movieInfo.getAttribute('data-movieID');
+    window.open(`movie-details.html?id=${movieID}`, '_blank');
+  }
+});
